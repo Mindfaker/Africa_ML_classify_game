@@ -7,9 +7,16 @@ class Train_Data():
     def __init__(self, train_data_path):
         self.raw_data_path = train_data_path
         self.raw_df = self.raw_clear_data()
-        pass
+
 
     def read_data(self, data_path: str):
+        """
+
+        读取原始数据
+
+        :param data_path:
+        :return:
+        """
         if os.path.exists(data_path):
             return pd.DataFrame()
         try:
@@ -19,6 +26,7 @@ class Train_Data():
             return data
         except:
             raise Exception("file is Not Csv Format")
+
 
     def one_hot_data(self, raw_data: pd.DataFrame) -> pd.DataFrame:
         """
@@ -40,5 +48,7 @@ class Train_Data():
     def raw_clear_data(self):
         raw_data = self.read_data(self.raw_data_path)
         data = self.one_hot_data(raw_data=raw_data)
+        return data
 
-        pass
+if __name__ == '__main__':
+    pass
